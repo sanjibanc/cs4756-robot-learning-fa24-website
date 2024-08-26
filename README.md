@@ -1,6 +1,6 @@
 # Website for CS4756
 
-Website: https://www.cs.cornell.edu/courses/cs4756/2024sp/
+Website: https://www.cs.cornell.edu/courses/cs4756/2024fa/
 
 ## How to update the CS4756 website
 
