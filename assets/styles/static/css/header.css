@@ -1,0 +1,41 @@
+.unitmark {
+    margin-top: 5px;
+    font-family: 'Open Sans', Verdana, 'DejaVu Sans', Arial, Helvetica, sans-serif;
+}
+
+.unitmark div {
+    display: inline-block;
+}
+
+#prl-header {
+    padding-top: 10px;
+    background-color: #fff;
+    border-bottom-color: rgb(244, 244, 244);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    /* margin-bottom: 5px; */
+}
+
+#prl-header a {
+    color: black;
+}
+
+#prl-header a:hover {
+    color: #990000;
+    text-decoration: none;
+}
+
+.nav-item {
+    display: block;
+    width: 60px;
+    margin-left: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 5px solid #efefef;
+}
+
+@media (min-width: 979px ) {
+    .navbar {
+        text-align: center;
+    }
+}

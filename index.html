@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="assets/styles/lib/featherlight/release/featherlight.min.css">
+    <link rel="stylesheet" href="assets/styles/static/css/style.css">
+    <link rel="stylesheet" href="assets/styles/static/css/header.css">
+    <link rel="stylesheet" href="assets/styles/static/css/footer.css"> 
+    <link rel="shortcut icon" type="image/jpeg" href="assets/img/cornell2.png"/> 
+
+    <title>Robot Learning </title>
+  </head>
+  <body>
+    <div id="prl-header">
+      <div class="container">
+        <h3 align="center">CS 4756/5756, Cornell University, Fall 2024</h3>
+        <h1 class="unitmark" align="center">Robot Learning</h1>
+        <h3 align="center">Instructor: <a href="https://www.sanjibanchoudhury.com" target="_blank">Sanjiban Choudhury </a></h3>
+        <h4 align="center">Lectures: Tue  / Thurs, Mallot Hall 251, 10:10 - 11:25 am </h4><br>
+
+
+
+        <div class="row">
+          <div class="col-lg-12">
+            <nav class="navbar">
+              <ul class="list-inline">
+                <li><a class="nav-item" href="#overview">Overview</a></li>
+                <li><a class="nav-item" href="#schedule">Schedule</a></li>
+                <li><a class="nav-item" href="#assignments">Assignments</a></li>
+                <li><a class="nav-item" href="#resources">Resources</a></li>
+                <li><a class="nav-item" href="#staff">Staff</a></li>
+                <li><a class="nav-item" href="#policies">Syllabus</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+      </div>
+    </div>
+<div class="container">
+
+
+<hr>
+<h3 id="overview" style="padding-bottom:5px;">Overview</h3>
+<div class="row">
+  <div class="col-xs-12">
+  <p>How do we get robots out of the labs and into the real world with all it's complexities? </p>
+  <p>
+    Robots must solve two fundamental problems -- (1) Perception: Sense the world using different modalities and (2) Decision making: Act in the world by reasoning over decisions and their consequences.
+    Machine learning promises to solve both problems in a scalable way using data.
+    However, it has fallen short when it comes to robotics.</p>
+
+    <p> This course dives deep into robot learning, looks at fundamental algorithms and challenges, and case-studies of real-world applications from self-driving to manipulation. We look at:</p>
+    
+    <ol>
+    <li> <b>Imitation and interactive no-regret learning</b> that handle distribution shifts, exploration/exploitation.
+    <li> <b>Practical reinforcement learning</b> leveraging both model predictive control and model-free methods.
+    <li> <b>Learning perception models</b> using probabilistic inference and 2D/3D deep learning.
+    <li> <b>Frontiers</b> in learning from human feedback (RLHF), planning with LLMs, human motion forecasting and offline reinforcement learning.
+    </ol>
+  </div>
+</div>
+
+
+<!-- <center><iframe width="560" height="315" src="https://www.youtube.com/embed/9VDXlW95qL0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center> -->
+
+
+<img src="assets/img/banner.png" style="width:100%;" alt="overview">
+
+<hr>
+<h3 id="schedule" style="padding-bottom:5px;">Schedule (Tentative)</h3>
+
+<div class="row">
+<div class="col-xs-12">
+<div class="table-responsive">
+<table class="table">
+<thead>
+<tr>
+  <th>Date</th>
+  <th>Lecture</th>
+  <th>Preread</th>
+  <th>Resources</th>
+</tr>
+</thead>
+<tbody>
+  <tr style="background-color:lightgray">
+    <td> </td>
+    <td> Fundamentals </td>
+    <td> </td>
+    <td> </td>
+  </tr>
+<tr>
+  <td>08/27/24</td>
+  <td>Introduction to Robot Learning </td>
+  <td></td>
+  <td><a href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html" target="_blank">The Bitter Lesson</a></td>
+</tr>
+<tr>
+  <td>08/29/24</td>
+  <td>Robots as Markov Decision Problems </td>
+  <td> <a href="https://macrl-book.github.io/assets/pdf/1_macrl.pdf" target="_blank"> MACRL Ch. 1 </a> </td>
+  <td> Dan Klein <a href="https://inst.eecs.berkeley.edu/~cs188/fa21/assets/slides/lec08.pdf" target="_blank"> slides I </a></td>
+</tr>
+<!-- <tr>
+  <td>1/30/24</td>
+  <td>Solving MDPs  [<a href="assets/slides_notes/lec3_slides.pdf" target="_blank">slides</a>, <a href="assets/slides_notes/lec3_notes.pdf" target="_blank">notes</a>] </td>
+  <td> <a href="https://macrl-book.github.io/assets/pdf/1_macrl.pdf" target="_blank"> MACRL Ch. 1 </a> </td>
+  <td> Dan Klein <a href="https://inst.eecs.berkeley.edu/~cs188/fa21/assets/slides/lec09.pdf" target="_blank">slides II</a> </td>
+</tr>
+<tr>
+  <td>2/1/24</td>
+  <td>Behavior Cloning, Feedback and Covariate Shift [<a href="assets/slides_notes/lec4_slides.pdf" target="_blank">slides</a>, <a href="assets/slides_notes/lec4_notes.pdf" target="_blank">notes</a>]</td>
+  <td> <a href="https://macrl-book.github.io/assets/pdf/6_macrl.pdf" target="_blank"> MACRL Ch. 6, Pg. 53-57 </a> </td>
+  <td> <a href="https://arxiv.org/abs/2102.02872" target="_blank"> Three regimes of covariate shift, <a href="https://youtu.be/GDmhrAHxgQE" target="_blank">Watch Imitation Learning Lecture!</a> </a>
+</tr>
+<tr>
+  <td>2/6/24</td>
+  <td>DAgger: Interactive Experts and No-Regret Learning  [<a href="assets/slides_notes/lec5_slides.pdf" target="_blank">slides</a>, <a href="assets/slides_notes/lec5_notes.pdf" target="_blank">notes</a>] </td>
+  <td> <a href="https://macrl-book.github.io/assets/pdf/6_macrl.pdf" target="_blank">  MACRL Ch. 6, Pg. 53-60 </td>
+  <td> <a href="https://arxiv.org/pdf/1011.0686.pdf" target="_blank">  DAGGER </a>
+</tr>
+<tr>
+  <td>2/8/24</td>
+  <td>DAgger (pt 2): Interactive Experts and No-Regret Learning [<a href="assets/slides_notes/lec6_slides.pdf" target="_blank">slides</a>, <a href="assets/slides_notes/lec6_notes.pdf" target="_blank">notes</a>] </td>
+  <td> <a href="https://macrl-book.github.io/assets/pdf/6_macrl.pdf" target="_blank">  MACRL Ch. 6, Pg. 53-60 </td>
+  <td> <a href="https://arxiv.org/pdf/1011.0686.pdf" target="_blank">  DAGGER </a>
+</tr>
+<tr>
+  <td>2/13/23</td>
+  <td>DAgger (pt 3): Interactive Experts and No-Regret Learning [<a href="assets/slides_notes/lec7_notes.pdf" target="_blank">notes</a>]</td>   
+  <td> <a href="https://arxiv.org/pdf/1011.0686.pdf" target="_blank">  DAGGER </a>
+</tr>
+<tr>
+  <td>2/15/23</td>
+  <td>Continuous MDPs: Linear Quadratic Regulator  [<a href="assets/slides_notes/lec8_slides.pdf" target="_blank">slides</a>, <a href="assets/slides_notes/lec8_notes.pdf" target="_blank">notes</a>]</td>   
+  <td> <a href="https://macrl-book.github.io/assets/pdf/2_macrl.pdf" target="_blank"> MACRL (Ch 2, 23-27) </a> </td>
+  <td> </td>
+</tr>
+<tr>
+  <td>2/20/23</td>
+  <td>Conquering Motion Planning via Sampling and Search [<a href="assets/slides_notes/lec9_slides.pdf" target="_blank">slides</a>] </td>
+  <td></td>
+  <td><a href="https://www.ri.cmu.edu/pub_files/2016/3/paper-lazysp.pdf"target="_blank"> LazySP</a></td>
+</tr>
+<tr>
+  <td>2/22/23</td>
+  <td>Model Predictive Control and the Unreasonable Effectiveness of Replanning [<a href="assets/slides_notes/lec10_slides.pdf" target="_blank">slides</a>, <a href="assets/slides_notes/lec10_notes.pdf" target="_blank">notes</a>]  </td>
+  <td></td>
+  <td> <a href="https://arxiv.org/pdf/2212.00541.pdf" target="_blank"> DeepMind MPC overview</a></td>
+</tr>
+<tr>
+  <td>2/29/23</td>
+  <td>Approximate Value and Policy Iteration [<a href="assets/slides_notes/lec11_slides.pdf" target="_blank">slides</a>]</td>
+  <td></td>
+  <td> <a href="https://macrl-book.github.io/assets/pdf/8_macrl.pdf" target="_blank"> MACRL (Ch 8), Pg 79-89 </a> , 
+    <a href="https://wensun.github.io/CS4789_data/PDL.pdf" target="_blank"> PDL </a>
+  </td>
+</tr>
+<tr>
+  <td>3/05/24</td>
+  <td>Policy Gradient [<a href="assets/slides_notes/lec12_slides.pdf" target="_blank">slides</a>, <a href="assets/slides_notes/lec12_notes.pdf" target="_blank">notes</a>] </td>
+  <td><a href="https://macrl-book.github.io/assets/pdf/11_macrl.pdf" target="_blank"> MACRL (Ch 11), Pg 129-133 </td>
+  <td> </td>
+</tr>
+<tr>
+  <td>3/07/24</td>
+  <td>Policy Gradient II [<a href="assets/slides_notes/lec13_slides.pdf" target="_blank">slides</a>, <a href="assets/slides_notes/lec13_notes.pdf" target="_blank">notes</a>]</td>
+  <td><a href="https://macrl-book.github.io/assets/pdf/11_macrl.pdf" target="_blank"> MACRL (Ch 11), Pg 133-end </td>
+  <td> </td>
+</tr>
+<tr>
+  <td>3/12/24</td>
+  <td>Actor Critic [<a href="assets/slides_notes/lec14_slides.pdf" target="_blank">slides</a>]</td>
+  <td><a href="https://macrl-book.github.io/assets/pdf/11_macrl.pdf" target="_blank"> MACRL (Ch 11), Pg 133-end </td>
+  <td> </td>
+</tr>
+<tr>
+  <td>3/14/24</td>
+  <td>Review [<a href="assets/slides_notes/lec15_slides.pdf" target="_blank">slides</a>]</td>
+  <td> </td>
+  <td> </td>
+</tr>
+<tr>
+  <td>3/19/24</td>
+  <td>POMDP [<a href="assets/slides_notes/lec16_slides.pdf" target="_blank">slides</a>]</td>
+  <td> </td>
+  <td> </td>
+</tr>
+<tr>
+  <td>3/21/24</td>
+  <td>In-class Prelim</td>
+  <td> </td>
+  <td> </td>
+</tr>
+<tr>
+  <td>3/26/24</td>
+  <td>Model-based RL [<a href="assets/slides_notes/lec17_slides.pdf" target="_blank">slides</a>]</td>
+  <td> </td>
+  <td> </td>
+</tr>
+<tr>
+  <td>3/28/24</td>
+  <td>Generative World Models [<a href="assets/slides_notes/lec18_slides.pdf" target="_blank">slides</a>] </td>
+  <td> </td>
+  <td> </td>
+</tr>
+<tr>
+  <td>4/9/24</td>
+  <td>Open Vocabulary Object Detection [<a href="assets/slides_notes/lec19_slides.pdf" target="_blank">slides</a>] </td>
+  <td> </td>
+  <td> </td>
+</tr>
+<tr>
+  <td>4/11/24</td>
+  <td>3D Perception: PointNet, Neural Radiance Fields [<a href="assets/slides_notes/lec20_slides.pdf" target="_blank">slides</a>] </td>
+  <td> </td>
+  <td> </td>
+</tr>
+<tr>
+  <td>4/16/24</td>
+  <td>No Class  </td>
+  <td> </td>
+  <td> </td>
+</tr>
+<tr>
+  <td>4/18/24</td>
+  <td>Reinforcement Learning from Human Feedback [<a href="assets/slides_notes/lec21_slides.pdf" target="_blank">slides</a>, <a href="assets/slides_notes/lec21_notes.pdf" target="_blank">notes</a>] </td>
+  <td> </td>
+  <td> </td>
+</tr>
+<tr>
+  <td>4/23/24</td>
+  <td>Predicting humans around robots  [<a href="assets/slides_notes/lec22_slides.pdf" target="_blank">slides</a>] </td>
+  <td> </td>
+  <td> </td>
+</tr>
+<tr>
+  <td>4/25/24</td>
+  <td>Offline RL [<a href="assets/slides_notes/lec23_slides.pdf" target="_blank">slides</a>]  </td>
+  <td> </td>
+  <td> </td>
+</tr>
+<tr>
+  <td>4/30/24</td>
+  <td>No Class  </td>
+  <td> </td>
+  <td> </td>
+</tr>
+<tr>
+  <td>5/02/24</td>
+  <td>Sim-to-real for Reals  [<a href="assets/slides_notes/lec24_slides.pdf" target="_blank">slides</a>] </td>
+  <td> </td>
+  <td> </td>
+</tr>
+<tr>
+  <td>5/07/24</td>
+  <td>Controlling Robots via Large Language Models (LLMs) [<a href="assets/slides_notes/lec25_slides.pdf" target="_blank">slides</a>] </td>
+  <td> </td>
+  <td> </td>
+</tr> -->
+<!-- <tr style="background-color:lightgray">
+  <td> </td>
+  <td> Planning and Control </td>
+  <td> </td>
+  <td> </td>
+</tr> -->
+<!-- <tr>
+  <td>2/7/23</td>
+  <td>Robots as Markov Decision Problems [<a href="assets/slides_notes/lec5_slides.pdf" target="_blank">slides</a>] </td>
+  <td> <a href="https://drive.google.com/file/d/1SGMdtjpP8-Yxga2ph-tUWBcFx5cH89t2/view?usp=sharing" target="_blank"> MACRL (Ch 1) </a> </td>
+  <td> Dan Klein <a href="https://inst.eecs.berkeley.edu/~cs188/fa21/assets/slides/lec08.pdf" target="_blank"> slides I </a>, <a href="https://inst.eecs.berkeley.edu/~cs188/fa21/assets/slides/lec09.pdf" target="_blank"></a>slides II</a> </td>
+</tr>
+<tr>
+  <td>2/9/23</td>
+  <td>Conquering Motion Planning via Sampling and Search [<a href="assets/slides_notes/lec6_slides.pdf" target="_blank">slides</a>, <a href="assets/slides_notes/lec6_notes.pdf" target="_blank">notes</a>] </td>
+  <td></td>
+  <td><a href="https://www.ri.cmu.edu/app/uploads/2018/01/Sanjiban-Choudhury-Thesis-2018.pdf"target="_blank"> Thesis, Ch. 3</a></td>
+</tr>
+<tr>
+  <td>2/14/23</td>
+  <td>Learning to Search [<a href="assets/slides_notes/lec7_slides.pdf" target="_blank">slides</a>, <a href="assets/slides_notes/lec7_notes.pdf" target="_blank">notes</a>] </td>
+  <td><a href="https://drive.google.com/file/d/1SGMdtjpP8-Yxga2ph-tUWBcFx5cH89t2/view?usp=sharing" target="_blank"> MACRL (Ch 6, full) </a>  </td>
+  <td> <a href="https://www.ri.cmu.edu/pub_files/2009/7/learch.pdf" target="_blank"> LEARCH</a>
+</tr>
+<tr>
+  <td>2/16/23</td>
+  <td>Continuous MDPs: Linear Quadratic Regulator [<a href="assets/slides_notes/lec8_slides.pdf" target="_blank">slides</a>,  <a href="assets/slides_notes/lec8_notes.pdf" target="_blank">notes</a>] </td>
+  <td> <a href="https://youtu.be/SE7-flsT6-o" target="_blank"> Watch LQR lecture!</a> </td>
+  <td> <a href="https://drive.google.com/file/d/1SGMdtjpP8-Yxga2ph-tUWBcFx5cH89t2/view?usp=sharing" target="_blank"> MACRL (Ch 2) </a> </td>
+</tr>
+<tr>
+  <td>2/21/23</td>
+  <td>Model Predictive Control and the Unreasonable Effectiveness of Replanning [<a href="assets/slides_notes/lec9_slides.pdf" target="_blank">slides</a>, <a href="assets/slides_notes/lec9_notes.pdf" target="_blank">notes</a>] <b>(Assignment 2 released)</b></td>
+  <td></td>
+  <td> <a href="https://arxiv.org/pdf/2212.00541.pdf" target="_blank"> DeepMind MPC overview</a></td>
+</tr>
+<tr>
+  <td>2/23/23</td>
+  <td>Model Predictive Control and the Unreasonable Effectiveness of Replanning (contd) </td>
+  <td></td>
+  <td></td>
+</tr>
+<tr style="background-color:lightgray">
+  <td> </td>
+  <td> Reinforcement Learning </td>
+  <td> </td>
+  <td> </td>
+</tr>
+<tr>
+  <td>3/2/23</td>
+  <td>Temporal difference and Q learning [<a href="assets/slides_notes/lec11_slides.pdf" target="_blank">slides</a>, notes]</td>
+  <td><a href="https://drive.google.com/file/d/1SGMdtjpP8-Yxga2ph-tUWBcFx5cH89t2/view?usp=sharing" target="_blank"> MACRL (Ch 9) </a> </td>
+  <td><a href="https://arxiv.org/abs/1806.10293">QT-Opt</a></td>
+</tr>
+<tr>
+  <td>3/7/23</td>
+  <td>Policy Optimization [<a href="assets/slides_notes/lec12_slides.pdf" target="_blank">slides</a>, <a href="assets/slides_notes/lec12_notes.pdf" target="_blank">notes</a>] </td>
+  <td></td>
+  <td><a href="https://drive.google.com/file/d/1SGMdtjpP8-Yxga2ph-tUWBcFx5cH89t2/view?usp=sharing" target="_blank"> MACRL (Ch 11) </a></td>
+</tr>
+<tr>
+  <td>3/9/23</td>
+  <td>Nightmares of Policy Optimization (contd) [<a href="assets/slides_notes/lec13_slides.pdf" target="_blank">slides</a>, notes] </td>
+  <td></td>
+  <td><a href="https://arxiv.org/abs/1801.01290"target="_blank">Soft Actor Critic</a></td>
+</tr>
+<tr>
+  <td>3/16/23</td>
+  <td>Dealing with Uncertainty [<a href="assets/slides_notes/lec14_slides.pdf" target="_blank">slides</a>, <a href="assets/slides_notes/lec14_notes.pdf" target="_blank">notes</a>] <b>(Assignment 3 released)</b></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>3/21/23</td>
+  <td>Planning with Inaccurate Models [<a href="assets/slides_notes/lec15_slides.pdf" target="_blank">slides</a>, <a href="assets/slides_notes/lec15_notes.pdf" target="_blank">notes</a>]  </td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>3/23/23</td>
+  <td>Review of Algorithms [<a href="assets/slides_notes/lec16_slides.pdf" target="_blank">slides</a>]  </td>
+  <td></td>
+  <td></td>
+</tr>
+<tr style="background-color:lightgray">
+  <td> </td>
+  <td> Robot Perception </td>
+  <td>  </td>
+  <td> </td>
+</tr>
+<tr>
+  <td>3/28/23</td>
+  <td>Visual Representation Learning  [<a href="assets/slides_notes/lec17_slides.pdf" target="_blank">slides</a>,  <a href="https://youtu.be/ilbu0aZXbhw" target="_blank">video</a>] </td>
+  <td> <a href="https://web.stanford.edu/class/cs231a/course_notes/07-representation-learning.pdf"target="_blank"> Notes of representation learning</a> </td>
+  <td> <a href="https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html" target="_blank">Pytorch CNN Tutorial </a></td>
+</tr>
+<tr>
+  <td>3/30/23</td>
+  <td>Object Detection [<a href="assets/slides_notes/lec18_slides.pdf" target="_blank">slides</a>] <b>(Project Proposals Due)</b></td>
+  <td></td>
+  <td><a href="https://arxiv.org/pdf/1703.06870.pdf"target="_blank">Mask RCNN</a></td>
+</tr>
+<tr style="background-color:lightgray">
+  <td> </td>
+  <td> World Models & Forecasting </td>
+  <td> </td>
+  <td> </td>
+</tr>
+<tr>
+  <td>4/11/2023</td>
+  <td> 3D Perception: PointNet, Neural Radiance Fields [<a href="assets/slides_notes/lec19_slides.pdf" target="_blank">slides</a>] </td>
+  <td></td>
+  <td><a href="http://stanford.edu/~rqi/pointnet/"_blank">PointNet</a> , <a href="https://www.matthewtancik.com/nerf"_blank">NERF</a> </td>
+</tr>
+<tr>
+  <td>4/13/2023</td>
+  <td> Forecasting in self-driving [<a href="assets/slides_notes/lec20_slides.pdf" target="_blank">slides</a>] <b>(Assignment 4 released)</b></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>4/18/2023</td>
+  <td>Generative World Models [<a href="assets/slides_notes/lec21_slides.pdf" target="_blank">slides</a>] </td>
+  <td></td>
+  <td></td>
+</tr>
+<tr style="background-color:lightgray">
+  <td> </td>
+  <td> Localization & Mapping </td>
+  <td> </td>
+  <td> </td>
+</tr>
+<tr>
+  <td>4/20/2023</td>
+  <td>SLAM as Graph Optimization I [<a href="assets/slides_notes/lec22_slides.pdf" target="_blank">slides</a>, <a href="assets/slides_notes/lec22_notes.pdf" target="_blank">notes</a>] </td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>4/25/2023</td>
+  <td>SLAM as Graph Optimization II [<a href="assets/slides_notes/lec23_slides.pdf" target="_blank">slides</a>, <a href="assets/slides_notes/lec23_notes.pdf" target="_blank">notes</a>] </td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>4/27/2023</td>
+  <td>Recap [<a href="assets/slides_notes/lec24_notes.pdf" target="_blank">notes</a>] </td>
+  <td></td>
+  <td></td>
+</tr>
+<tr style="background-color:lightgray">
+  <td> </td>
+  <td> Open Challenges </td>
+  <td> </td>
+  <td> </td>
+</tr>
+<tr>
+  <td>5/2/2023</td>
+  <td>No Class </td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>5/4/2023</td>
+  <td>Visuomotor Skill Learning [slides, notes] <b>(Final Project Presentation Video Due)</b> </td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td>5/9/2023</td>
+  <td>Controlling Robots via Large Language Models (LLMs) [<a href="assets/slides_notes/lec26_slides.pdf" target="_blank">slides</a>] <b>(Final Project Review Due)</b></td>
+  <td></td>
+  <td></td>
+</tr> -->
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+<hr>
+<h3 id="assignments" style="padding-bottom:5px;">Assignments, Prelim and Final Project</h3>
+<div class="row">
+  <div class="col-xs-12">
+  <p>
+  There will be a total of 6 assignments. The first one checks prerequisites. Three of the assignments will be written. Three of the assignments will involve programming. As the course progresses, we will release each assignment in the links below.
+  <ul style="list-style-type:none;">
+    <li>Assignment 0: Fundamentals</li>
+    <li>Assignment 1: Written</li>
+    <li>Assignment 2: Programming</li>
+    <li>Assignment 3: Written</li>
+    <li>Assignment 4: Programming</li>
+    <li>Assignment 5: Programming</li>
+  </ul>  
+  </p>
+
+  <p> Every assignment has a question which is compulsory for CS 5756. 
+  </p>
+
+  <p> We will have an in-class prelim (date TBD). The prelims will test concepts taught in the lectures and written assignments.  
+  </p>
+
+  <p>
+    There will also be a final project. This is your chance to get creative and apply what you have learned! For the project, you may work in groups of up to 3 people. There will be three deliverables - a project proposal, a final report and a final presentation. 
+  </p>
+
+  </div>
+</div>
+
+<hr>
+<h3 id="resources" style="padding-bottom:5px;">Resources</h3>
+<div class="row">
+  <div class="col-xs-12">
+
+<h4>Technology</h4>
+<p> 
+<ul style="list-style-type:none;">
+  <li>Course Website: The ONE true hub for all information. Please check this frequently and surface any errors or sources of confusion.</li>
+  <li>Ed: The discussion forum where all announcements are sent, where all student-TA and student-student communications occur.</li>
+  <li>Gradescope: Where all assignments and projects are submitted.</li>
+  <li>Canvas: No use.</li>
+</ul> 
+</p>
+
+<h4>Code</h4>
+<p> 
+<ul style="list-style-type:none;">
+  <li><a href="https://github.com/portal-cornell/cs4756-robot-learning-sp24/tree/main/notebooks" target="_blank">Python Notebooks for CS4756:</a> A series of notebooks used in the lectures that are useful for building intuition and learning to code.</li>
+  <li><a href="https://cs231n.github.io/python-numpy-tutorial/" target="_blank">Python + Numpy tutorial:</a> An excellent, concise getting started guide for Python and Numpy from CS231@Stanford.</li>
+  <li><a href="https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html" target="_blank">Pytorch tutorial:</a> A 60 minutes Blitz!.</li>
+</ul> 
+</p>
+
+<h4>Relevant Textbooks</h4>
+<p> The course is extensively based off of the following book:
+    <ul style="list-style-type:none;">
+    <li><a target="_blank" href="https://macrl-book.github.io/">Modern Adaptive Control and Reinforcement Learning (MACRL)</a>, James A. Bagnell, Byron Boots, and Sanjiban Choudhury</li>
+  </ul>
+  </ul> 
+  This a live book that is constantly being updated. Periodically check this link for newer versions. Students are encouraged to send feedback and corrections to the instructor.
+</p>
+<p> 
+Other helpful books and notes:
+  <ul style="list-style-type:none;">
+    <li><a target="_blank" href="https://docs.ufpr.br/~danielsantos/ProbabilisticRobotics.pdf">Probabilistic Robotics</a>, Sebastian Thrun, Wolfram Burgard and Dieter Fox</li>
+    <li><a target="_blank" href="http://incompleteideas.net/book/the-book-2nd.html">Reinforcement Learning: An Introduction</a>, Richard S. Sutton and Andrew G. Barto</li>
+    <li><a target="_blank" href="https://bayes.wustl.edu/etj/prob/book.pdf">Probability Theory: The Logic of Science,</a>, E.T. Jaynes</li>
+  </ul> 
+</p>
+
+<h4>Courses / Lectures</h4>
+<p> 
+  <ul style="list-style-type:none;">
+    <li><a target="_blank" href="https://www.youtube.com/playlist?list=PLQZQ7N26C6ba2BDFVULmmBYC80cX6pNjZ">Imitation Learning: A Series of Deep Dives</a>, Sanjiban Choudhury</li>
+    <li><a target="_blank" href="https://youtube.com/playlist?list=PLQZQ7N26C6ba-ifTijXwr2NXMkYbQe39O">Interactive Online Learning: A Unified Algorithmic Framework</a>, Sanjiban Choudhury</li>
+  </ul> 
+</p>
+</div>
+</div>
+
+
+<h3 id="staff">Staff</h3>
+<div class="row">
+<div class="col-xs-12">
+  <table>
+
+  <tr>
+  <td><img class="profile" src="assets/img/sanjiban.jpg" alt="choudhury"> </td>
+  <td> 
+    <h4> <a href="http://www.sanjibanchoudhury.com/" target="_blank"> Sanjiban Choudhury </a> </h4> 
+    <h4 style="color:#373737;"> Instructor </h4>
+    sanjibanc@cornell.edu <br><br>
+    <!-- <b>Office Hours:</b> <br>
+    Tuesday 11:30 - 1:00 pm, Gates 413 B  -->
+  </td>
+  <td> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td>
+  <td><img class="profile" src="assets/img/prithwish.jpg" alt="prithwish"> </td>
+  <td> <h4>  Prithwish Dan </h4>
+   <h4 style="color:#373737;"> Teaching Assistant </h4>
+   pd337@cornell.edu <br><br>
+   <!-- <b>Office Hours:</b> <br>
+   Tuesday 2:00 - 4:00 pm, Rhodes 404 -->
+  </td>
+  </tr>
+  <tr>
+    <td><img class="profile" src="assets/img/nat.jpg" alt="nat"> </td>
+    <td> <h4> Nathaniel Chin </h4>
+     <h4 style="color:#373737;"> Teaching Assistant </h4>
+     nlc62@cornell.edu <br><br>
+     <!-- <b>Office Hours:</b> <br>
+     Friday 11:00 am - 1:00 pm, Rhodes 404 -->
+    </td>
+    <td> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td>
+    <td><img class="profile" src="assets/img/adam.jpeg" alt="adam"> </td>
+    <td> <h4>  Adam Cahall </h4>
+     <h4 style="color:#373737;"> Teaching Assistant </h4>
+     abc256@cornell.edu <br><br>
+     <!-- <b>Office Hours:</b> <br>
+     Thursday 1:15 - 3:15 pm, Rhodes 404 -->
+    </td>
+    </tr>
+    <tr>
+      <td><img class="profile" src="assets/img/atiklsh.jpg" alt="atiksh"> </td>
+      <td> <h4>  Atiksh Bhardwaj </h4>
+       <h4 style="color:#373737;"> Teaching Assistant </h4>
+       ab2635@cornell.edu <br><br>
+       <!-- <b>Office Hours:</b> <br>
+       Wednesday 11:00 am - 1:00 pm, Rhodes 404 -->
+      </td>
+      <td> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td>
+      <td><img class="profile" src="assets/img/qian.jpeg" alt="qian"> </td>
+      <td> <h4>  Qian Meng </h4>
+       <h4 style="color:#373737;"> Teaching Assistant </h4>
+       qm34@cornell.edu <br><br>
+       <!-- <b>Office Hours:</b> <br>
+       Tuesday 2:00 - 4:00 pm, Rhodes 404 -->
+      </td>
+      </tr>
+      <tr>
+        <td><img class="profile" src="assets/img/zach.jpeg" alt="zach"> </td>
+        <td> <h4> Zach Garcia  </h4>
+         <h4 style="color:#373737;"> Teaching Assistant </h4>
+         zag7@cornell.edu <br><br>
+         <!-- <b>Office Hours:</b> <br>
+         Monday 9:00 - 11:00 am, Rhodes 404 -->
+        </td>
+        <td> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td>
+        <td><img class="profile" src="assets/img/ved.jpeg" alt="ved"> </td>
+        <td> <h4> Ved Sriraman </h4>
+         <h4 style="color:#373737;"> Teaching Assistant </h4>
+         vs346@cornell.edu <br><br>
+         <!-- <b>Office Hours:</b> <br>
+         Friday 9:00 - 11:00 am, <a href = "https://cornell.zoom.us/j/2765357642?pwd=dzhYK2FDMCtzb1BOSjFudlY2aEZFZz09">Zoom</a> -->
+        </td>
+        </tr>
+        <tr>
+          <td><img class="profile" src="assets/img/zubin.jpeg" alt="zubin"> </td>
+          <td> <h4> Zubin Bhaumik  </h4>
+           <h4 style="color:#373737;"> Teaching Assistant </h4>
+           jlr429@cornell.edu <br><br>
+           <!-- <b>Office Hours:</b> <br>
+           Saturday 9:00 - 11:00 am, Rhodes 404 -->
+          </td>
+          <td> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td>
+          <td><img class="profile" src="assets/img/Riley_Coogan.jpeg" alt="riley"> </td>
+          <td> <h4> Riley Coogan </h4>
+           <h4 style="color:#373737;"> Teaching Assistant </h4>
+           rmc329@cornell.edu <br><br>
+           <!-- <b>Office Hours:</b> <br>
+           Friday 9:00 - 11:00 am, <a href = "https://cornell.zoom.us/j/2765357642?pwd=dzhYK2FDMCtzb1BOSjFudlY2aEZFZz09">Zoom</a> -->
+          </td>
+          </tr>
+          <tr>
+            <td><img class="profile" src="assets/img/giorgi.jpeg" alt="giorgi"> </td>
+            <td> <h4> Giorgi Berndt  </h4>
+             <h4 style="color:#373737;"> Teaching Assistant </h4>
+             gb449@cornell.edu <br><br>
+             <!-- <b>Office Hours:</b> <br>
+             Saturday 9:00 - 11:00 am, Rhodes 404 -->
+            </td>
+            </tr>
+  </table>
+  <p>
+Assignments, lectures, and ideas on this syllabus are partially adapted from <a href="https://www.ri.cmu.edu/ri-faculty/j-andrew-drew-bagnell/" target="_blank">Drew Bagnell</a> course at Carnegie Mellon University. We thank Drew for insightful discussions and suggestions for how to structure the course. 
+</p>
+    </div>
+</div>
+
+
+<hr>
+<h3 id="policies" style="padding-bottom:5px;">Syllabus</h3>
+<div class="row">
+  <div class="col-xs-12">
+  <p>
+
+ <h4>Learning Outcomes</h4>
+  <div class="col-xs-12">
+  <p>
+  <ol>
+  <li> Formulate various robot perception problems, e.g. state estimation, object detection, mapping as probabilistic inference. 
+  <li> Formulate various robot decision making problems, e.g. self-driving, manipulation, assistive robots, as Markov Decision Problems (MDP).
+  <li> Implement and compare various deep learning approaches to train robot perception models for 2D / 3D vision. 
+  <li> Implement and compare various learning algorithms to train robot policies for imitation learning, reinforcement learning and model predictive control. 
+  <li> Identify sources of distribution shift in robot learning and apply appropriate techniques from online learning to counter it. 
+  <li> Design and benchmark robot learning algorithms that integrate with open-source robot datasets and simulation platforms.  
+  </ol>
+  </p>
+</div>
+
+
+<div class="row">
+  <div class="col-xs-12">
+  <p>
+
+ <h4>Prerequisites</h4>
+  <div class="col-xs-12">
+  <p>MATH 1920/ MATH 2220, MATH 2940, CS 1110, CS 4780 or permission of instructor. This course is targeted towards senior-level undergraduate students and junior graduate students. Graduate students should enroll in the graduate version of the course. Students should have a solid background in linear algebra and probability. This course involves implementing state of the art algorithms on real world datasets and simulators. Hence, strong familiarity with Python and neural network libraries (Pytorch / TensorFlow/ JAX) is required.
+  </p>
+</div>
+
+
+ <h4>Grading Policy</h4>
+  <div class="col-xs-12">
+    <p>
+    Here’s a breakdown of grades:
+    </p>
+    <div class="row">
+    <div class="col-xs-12">
+    <div class="table-responsive">
+    <table class="table">
+    <thead>
+    <tr>
+      <th>Component</th>
+      <th>Details</th>
+      <th>%Grade</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>Assignments</td>
+      <td>6 assignments (5% + 5*9%)</td>
+      <td>50%</td>
+    </tr>
+    <tr>
+      <td>In-class Prelim</td>
+      <td></td>
+      <td>20%</td>
+    </tr>
+    <tr>
+      <td>Final Project</td>
+      <td>Final Report: 10%, <br>
+          Final Presentation Video: 10%
+      </td>
+      <td>20%</td>
+    </tr>
+    <tr>
+      <td>Participation</td>
+      <td>In-class participation</td>
+      <td>10%</td>
+    </tr>
+    <tr>
+      <td><b>Total</b></td>
+      <td> </td>
+      <td>100%</td>
+    </tr>
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+
+<p>Assignments must be done individually. Each assignment will require students to turn in a writeup and code in Gradescope. It is acceptable for students to discuss problems with each other; it is not acceptable for students to share answers or code. Please indicate on each homework with whom you collaborated with and what online resources you used.
+</p>
+
+<p>Every assignment has a question which is compulsory for CS 5756. </p>
+
+<p>
+The final project can be done in groups of up to 3. There are three deliverables - an extended abstract, a final report, and a final presentation video. 
+We will share a template for abstract and final report in due time. The final presentation will be in form of a 5 minute video that will be reviewed by your peers!
+</p>
+
+<p>
+Research has demonstrated that the best learning occurs when the learner is actively involved. We will have frequent opportunities for students to work together during lectures. We expect you to come to class prepared to focus, interact with classmates, and participate in the activities. We also expect you to participate in discussions on Ed and create an engaging environment. 
+</p>
+
+</div> 
+
+ <h4>Late Policy</h4>
+  <div class="col-xs-12">
+ <p>
+  Assignments must be submitted by the posted due date. You are allowed up to 3 TOTAL LATE DAYs throughout the entire semester. If you exceed the late days, assignments will incur a reduction in score by 33% for each extra day. Regrade requests, if the case is strong and a significant number of points are at stake, should be submitted via Gradescope one week of when a deliverable is returned to the student. You must provide a justification for the regrade request.
+</p>
+
+<p>
+In case of a legitimate situation or medical emergency that arises during the semester that is going to hinder your ability to complete the work on time, contact Prof. Choudhury as soon as possible. Extensions (beyond the already assigned slip days) will be granted only in exceptional circumstances, such as documented illness, not for situations such as job interviews or large workloads in other courses.
+</p>
+</div> 
+
+<h4>Academic Integrity</h4>
+<div class="col-xs-12">
+<p>
+This course adheres to all aspects of Cornell's Code of Academic Integrity. Any work presented as your own must be your own, with no exceptions tolerated. Submitting work created by ChatGPT, or copied from a bot or a website, as your own work violates Academic Integrity. All violations of this policy will result in a penalty depending on the severity. The penalty may be a failing grade on the relevant assignment or exam, or a failing grade in the class. The code can be found at: <a href="http://cuinfo.cornell.edu/aic.cfm" target="_blank">http://cuinfo.cornell.edu/aic.cfm</a>
+</p>
+</div> 
+
+<h4>Generative AI</h4>
+<div class="col-xs-12">
+<p>
+The work you do consists of writing code and natural language descriptions. To some extent, the new crop of “generative AI” (GAI) tools can do both of these things for you. However, we require that the <b>vast majority of the intellectual work must be originated by you, not by GAI</b>. You may use GAI to look up helper functions, or to proofread your text, but clearly document how you used it. 
+</p>
+
+<p>
+In this class, for every assignment and final project, you can choose between two options:
+</p>
+
+<p>
+  Option 1: <b>Avoid all GAI tools.</b> Disable GitHub Copilot in your editor, do not ask chatbots any questions related to the assignment, etc. If you choose this option, you have nothing more to do.
+</p>
+
+<p>
+  Option 2: <b>Use GAI tools with caution</b> and include a one-paragraph description of everything you used them for along with your writeup. This paragraph must:
+  <ol>
+    <li> Link to exactly which tools you used and describe how you used each of them, for which parts of the work.
+    <li> Give at least one concrete example (e.g., generated code or Q&A output) that you think is particularly illustrative of the “help” you got from the tool.
+    <li> Describe any times when the tool was unhelpful, especially if it was wrong in a particularly hilarious way.
+    <li> Conclude with your current opinion about the strengths and weaknesses of the tools you used for real-world compiler implementation.
+  </ol>
+  Remember that you can pick whether to use GAI tools for every assignment, so using them on one set of tasks doesn’t mean you have to keep using them forever.
+</p>
+
+<p>Below we provide some guidelines for what is / is not ok when using GAI for this class:
+<ol>
+  <li> Example of something that is <b>allowed</b>: You write the initial code / writeup. You then use GAI to debug the code / improve writing flow. You do not use the system's output to add extra content.
+  <li> Example of something that is <b>definitely not allowed</b>: You essentially use GAI to generate most of the code / writeup, even if you later post-edit and correct the output.
+  <li> Example of something that is <b>OK but requires special treatment</b>: You start with procedure in 1. But, the GAI suggests good points that you hadn’t thought of before, or makes you realize that a point you had made isn’t quite right. You may include this new material, but follow the guidelines above to document the use. 
+</ol>
+</p>
+
+</div>
+
+<h4>Diversity, Equity and Inclusion</h4>
+<div class="col-xs-12">
+<p>
+Students in this course come from a variety of backgrounds, abilities, and identities. In order to ensure an environment conducive to learning, all members of the course must treat one another and the course staff with respect. If you feel your needs are not being adequately accommodated by the other students or instruction staff, please contact Prof. Choudhury.
+</p>
+</div> 
+
+
+<h4>COVID-19 related issues</h4>
+<div class="col-xs-12">
+<p>
+  Zoom recordings of lecturers are not available for absences, including absences due to illness.
+</p>
+
+<p>
+  If you are a close contact with someone who is diagnosed with COVID19, even if you do not experience symptoms, you should test yourself [and you may want to request masking for five days after exposure regardless of the outcome]. 
+</p>
+
+
+  If you have symptoms of COVID19 and have not been tested: 
+  <ol>
+    <li> Do not come to class.
+    <li> Email Prof. Choudhury before class starts to let [me, TA] know that you are not coming.
+    <li>   Get an antigen test.
+    <li>  If the test is negative, you may return to the next class. Please wear a mask until your symptoms are gone, even if you test negative.
+    <li>   If your antigen test is positive, please let  Prof. Choudhury known and follow the guidance here: https://health.cornell.edu/resources/health-topics/COVID. 
+    </ol>
+
+</p>
+</div> 
+
+<h4>Accomodations</h4>
+<div class="col-xs-12">
+<p>
+  Your access in this course is important to me. Please request your accommodation letter early in the semester, or as soon as you become registered with Student Disability Services (SDS), so that we have adequate time to arrange your approved academic accommodations.
+
+Once SDS approves your accommodation letter, it will be emailed to both you and me. Please follow up with Prof. Choudhury to discuss the necessary logistics of your accommodations.
+If you are approved for exam accommodations, please consult with Prof. Choudhury at least two weeks before the scheduled exam date to confirm the testing arrangements.
+If you experience any access barriers in this course, such as with printed content, graphics, online materials, or any communication barriers, reach out to me or SDS right away.
+If you need immediate accommodation, please speak with me after class or send an email message to me and SDS at sds_cu@cornell.edu.
+</p>
+</div> 
+
+<h4>Mental Health and Well-being</h4>
+<div class="col-xs-12">
+<p>
+  Your health and wellbeing are important to me. There are services and resources at Cornell designed specifically to bolster undergraduate, graduate, and professional student mental health and well-being. Remember, your mental health and emotional well-being are just as important as your physical health. If you or a friend are struggling emotionally or feeling stressed, fatigued, or burned out, there is a continuum of campus resources available to you: <a href="https://mentalhealth.cornell.edu/get-support/support-students"> https://mentalhealth.cornell.edu/get-support/support-students </a>. Help is also available any time day or night through Cornell’s 24/7 phone consultation (607-255-5155). You can also reach out to me, your college student services office, your resident advisor, or Cornel Health for support.
+</p>
+
+
+
+</div> 

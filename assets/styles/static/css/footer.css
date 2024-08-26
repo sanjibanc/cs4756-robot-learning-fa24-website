@@ -1,0 +1,25 @@
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+#prl-footer {
+    height: 80px;
+    font-size: 12px;
+    margin-top: 10px;
+    background-color: #000;
+    color: rgb(119, 119, 119);
+}
+
+#prl-footer p {
+    padding-top: 30px;
+    /*padding-bottom: 30px;*/
+}
+ #prl-footer a {
+    color: rgb(119, 119, 119);
+ }
+
+#prl-footer a:hover {
+    color: #990000;
+}
